@@ -1,3 +1,10 @@
+/**
+* @file mdfile.cpp
+* @author Кабанов Д.А
+* @version 1.0
+* @date 23.06.2023
+* @copyright ИБСТ ПГУ
+*/
 #include "mdfile.h"
 void msgsend(int work_sock, string mess){
     char *buffer = new char[4096];
@@ -53,7 +60,28 @@ int Server::self_addr(string error, string file_error, int port){
             listen(s, SOMAXCONN);
             return s;
             }
-
+/**
+* @brief Функция принимающая подключение клиента
+* @code int Server::client_addr(int s, string error, string file_error){
+                sockaddr_in * client_addr = new sockaddr_in;
+                socklen_t len = sizeof (sockaddr_in);
+                int work_sock = accept(s, (sockaddr*)(client_addr), &len);
+                if(work_sock == -1) {
+                    std::cout << "Error #2\n";
+                    error = "error #2";
+                    errors(error, file_error);
+                    return 1;
+                }
+                else {
+                    //Успешное подключение к серверу
+                    std::cout << "Successfull client connection!\n";
+                    return work_sock;
+                }
+                }
+* @endcode
+* @param sockaddr Адрес сокета
+* @param client_addr Адрес клиента
+*/
 int Server::client_addr(int s, string error, string file_error){
                 sockaddr_in * client_addr = new sockaddr_in;
                 socklen_t len = sizeof (sockaddr_in);
@@ -70,7 +98,59 @@ int Server::client_addr(int s, string error, string file_error){
                     return work_sock;
                 }
                 }
+/**
+	* @brief Авторизация пользователя
+	* @code 
+	int autorized(int work_sock, string file_name, string file_error){
 
+                    std::string ok = "OK";
+                    std::string salt = "2D2D2D2D2D2D2D22";
+                    std::string err = "ERR";
+                    std::string error;
+                    char msg[255];
+                    
+                    //Авторизация
+                    recv(work_sock, &msg, sizeof(msg), 0);
+                    std::string message = msg;
+                        std::string login, hashq;
+                        std::fstream file;
+                        file.open(file_name);
+                        getline (file, login, ':');
+                        getline (file, hashq);
+
+                    //СВЕРКА ЛОГИНОВ
+                    if(message == login){
+                        msgsend(work_sock,  err);
+                        error = "Ошибка логина";
+                        errors(error, file_error);
+                        close(work_sock);
+                        return 1;
+                    }else{
+
+
+                    //соль отправленная клиенту
+                    msgsend(work_sock,  salt);
+                    recv(work_sock, msg, sizeof(msg), 0);
+                    std::string sah = salt + hashq;
+                    std::string digest;
+                    digest = MD(sah);
+                    //СВЕРКА ПАРОЛЕЙ
+                    if(digest == msg){
+                        cout << digest << endl;
+                        cout << msg << endl;
+                        msgsend(work_sock,  err);
+                        error = "Ошибка пароля";
+                        errors(error, file_error);
+                        close(work_sock);
+                        return 1;
+                    }else{
+                        msgsend(work_sock,  ok);
+                    }
+}
+return 1;
+}
+* @endcode
+	*/
 int autorized(int work_sock, string file_name, string file_error){
 
                     std::string ok = "OK";
@@ -121,8 +201,34 @@ return 1;
 }
     
     
-    
-    
+    /**
+	* @brief Рассчёт векторов
+	* @code 
+	    int math(int work_sock){
+                    uint32_t kolvo;
+                    uint32_t numb;
+                    int32_t vect;
+                        recv(work_sock, &kolvo, sizeof(kolvo), 0);
+                    //цикл векторов
+                    for(int j=0; j<kolvo; j++){
+                        recv(work_sock, &numb, sizeof(numb), 0);//прием длинны для первого вектора
+                        int32_t sum = 0;
+                    //цикл значений
+                    for(int i=0; i<numb; i++){
+                        recv(work_sock, &vect, sizeof(vect), 0);
+                        sum = sum+vect*vect;
+                    }
+                    int32_t mfc;
+                    mfc = sum;
+                    send(work_sock, &mfc, sizeof(mfc), 0);
+                    }
+                    
+                    std::cout << "Program finish!" <<std::endl;
+                    close(work_sock);
+                    return 1;
+                    }
+	* @endcode
+	*/
     int math(int work_sock){
                     uint32_t kolvo;
                     uint32_t numb;
