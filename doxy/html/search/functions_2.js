@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['er_0',['er',['../mdfile_8cpp.html#a9748244e5c9ec9ac4ea4ee5c77f29959',1,'er(std::string file_name, std::string file_error):&#160;mdfile.cpp'],['../mdfile_8h.html#a9748244e5c9ec9ac4ea4ee5c77f29959',1,'er(std::string file_name, std::string file_error):&#160;mdfile.cpp']]],
-  ['errors_1',['errors',['../mdfile_8cpp.html#a198154bf74cde3b84f5b9aacce83e01f',1,'errors(std::string error, std::string name):&#160;mdfile.cpp'],['../mdfile_8h.html#a198154bf74cde3b84f5b9aacce83e01f',1,'errors(std::string error, std::string name):&#160;mdfile.cpp']]]
+  ['main_0',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
+  ['math_1',['math',['../mdfile_8cpp.html#a87fd77323b4c3ee742811a2b6b76dfa5',1,'mdfile.cpp']]],
+  ['msgsend_2',['msgsend',['../mdfile_8cpp.html#a2261239a94510c87c11a323b7aab50f9',1,'mdfile.cpp']]]
 ];

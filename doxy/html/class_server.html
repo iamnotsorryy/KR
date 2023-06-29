@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.7"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Server</title>
+<title>My Project: Server Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,9 +21,8 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">My Project<span id="projectnumber">&#160;1.6</span>
+   <div id="projectname">My Project
    </div>
-   <div id="projectbrief">Курсовая работа</div>
   </td>
  </tr>
  </tbody>
@@ -73,20 +72,27 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="class_server-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">Server</div></div>
+  <div class="headertitle"><div class="title">Server Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p><code>#include &quot;<a class="el" href="mdfile_8h_source.html">mdfile.h</a>&quot;</code></p>
+<p>Класс, управляющий работой сервера  
+ <a href="class_server.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="mdfile_8h_source.html">mdfile.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a972db953af9cb2c28ec9359788452a5c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server.html#a972db953af9cb2c28ec9359788452a5c">client_addr</a> (int s, string error, string file_error)</td></tr>
-<tr class="separator:a972db953af9cb2c28ec9359788452a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad6d0eef2397b3368cdd3d6ec134e462"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server.html#aad6d0eef2397b3368cdd3d6ec134e462">self_addr</a> (string error, string file_error, int port)</td></tr>
+<tr class="memdesc:aad6d0eef2397b3368cdd3d6ec134e462"><td class="mdescLeft">&#160;</td><td class="mdescRight">конструктор класса  <br /></td></tr>
 <tr class="separator:aad6d0eef2397b3368cdd3d6ec134e462"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a972db953af9cb2c28ec9359788452a5c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_server.html#a972db953af9cb2c28ec9359788452a5c">client_addr</a> (int s, string error, string file_error)</td></tr>
+<tr class="memdesc:a972db953af9cb2c28ec9359788452a5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция принимающая подключение клиента  <br /></td></tr>
+<tr class="separator:a972db953af9cb2c28ec9359788452a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Класс, управляющий работой сервера </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a972db953af9cb2c28ec9359788452a5c" name="a972db953af9cb2c28ec9359788452a5c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a972db953af9cb2c28ec9359788452a5c">&#9670;&#160;</a></span>client_addr()</h2>
 
@@ -118,6 +124,32 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Функция принимающая подключение клиента </p>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="class_server.html#a972db953af9cb2c28ec9359788452a5c">Server::client_addr</a>(<span class="keywordtype">int</span> s, <span class="keywordtype">string</span> error, <span class="keywordtype">string</span> file_error){</div>
+<div class="line">             sockaddr_in * <a class="code hl_function" href="class_server.html#a972db953af9cb2c28ec9359788452a5c">client_addr</a> = <span class="keyword">new</span> sockaddr_in;</div>
+<div class="line">             socklen_t len = <span class="keyword">sizeof</span> (sockaddr_in);</div>
+<div class="line">             <span class="keywordtype">int</span> work_sock = accept(s, (sockaddr*)(<a class="code hl_function" href="class_server.html#a972db953af9cb2c28ec9359788452a5c">client_addr</a>), &amp;len);</div>
+<div class="line">             <span class="keywordflow">if</span>(work_sock == -1) {</div>
+<div class="line">                 std::cout &lt;&lt; <span class="stringliteral">&quot;Error #2\n&quot;</span>;</div>
+<div class="line">                 error = <span class="stringliteral">&quot;error #2&quot;</span>;</div>
+<div class="line">                 errors(error, file_error);</div>
+<div class="line">                 <span class="keywordflow">return</span> 1;</div>
+<div class="line">             }</div>
+<div class="line">             <span class="keywordflow">else</span> {</div>
+<div class="line">                 <span class="comment">//Успешное подключение к серверу</span></div>
+<div class="line">                 std::cout &lt;&lt; <span class="stringliteral">&quot;Successfull client connection!\n&quot;</span>;</div>
+<div class="line">                 <span class="keywordflow">return</span> work_sock;</div>
+<div class="line">             }</div>
+<div class="line">             }</div>
+<div class="ttc" id="aclass_server_html_a972db953af9cb2c28ec9359788452a5c"><div class="ttname"><a href="class_server.html#a972db953af9cb2c28ec9359788452a5c">Server::client_addr</a></div><div class="ttdeci">int client_addr(int s, string error, string file_error)</div><div class="ttdoc">Функция принимающая подключение клиента</div><div class="ttdef"><b>Definition</b> mdfile.cpp:85</div></div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sockaddr</td><td>Адрес сокета </td></tr>
+    <tr><td class="paramname">client_addr</td><td>Адрес клиента </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -153,11 +185,19 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>конструктор класса </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>порт сервера </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/Даня/Desktop/kurint32/<a class="el" href="mdfile_8h_source.html">mdfile.h</a></li>
-<li>C:/Users/Даня/Desktop/kurint32/<a class="el" href="mdfile_8cpp.html">mdfile.cpp</a></li>
+<li><a class="el" href="mdfile_8h_source.html">mdfile.h</a></li>
+<li><a class="el" href="mdfile_8cpp.html">mdfile.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

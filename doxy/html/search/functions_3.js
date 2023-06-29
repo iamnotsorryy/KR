@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp'],['../_unit_test_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;UnitTest.cpp']]],
-  ['math_1',['math',['../mdfile_8cpp.html#a87fd77323b4c3ee742811a2b6b76dfa5',1,'math(int work_sock):&#160;mdfile.cpp'],['../mdfile_8h.html#a87fd77323b4c3ee742811a2b6b76dfa5',1,'math(int work_sock):&#160;mdfile.cpp']]],
-  ['md_2',['MD',['../mdfile_8cpp.html#aca36b4f222e88d8334a40aba414f7e39',1,'MD(std::string sah):&#160;mdfile.cpp'],['../mdfile_8h.html#aca36b4f222e88d8334a40aba414f7e39',1,'MD(std::string sah):&#160;mdfile.cpp']]],
-  ['msgsend_3',['msgsend',['../mdfile_8cpp.html#a2261239a94510c87c11a323b7aab50f9',1,'msgsend(int work_sock, string mess):&#160;mdfile.cpp'],['../mdfile_8h.html#a2261239a94510c87c11a323b7aab50f9',1,'msgsend(int work_sock, string mess):&#160;mdfile.cpp']]]
+  ['self_5faddr_0',['self_addr',['../class_server.html#aad6d0eef2397b3368cdd3d6ec134e462',1,'Server']]],
+  ['suite_1',['SUITE',['../_unit_test_8cpp.html#a43a63e9043e8225b0e095cc9863d2dc5',1,'UnitTest.cpp']]]
 ];
