@@ -1,0 +1,82 @@
+\hypertarget{classServer}{}\doxysection{Класс Server}
+\label{classServer}\index{Server@{Server}}
+
+
+Класс, управляющий работой сервера  
+
+
+
+
+{\ttfamily \#include $<$mdfile.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classServer_aad6d0eef2397b3368cdd3d6ec134e462}{self\+\_\+addr}} (string error, string file\+\_\+error, int port)
+\begin{DoxyCompactList}\small\item\em конструктор класса \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classServer_a972db953af9cb2c28ec9359788452a5c}{client\+\_\+addr}} (int s, string error, string file\+\_\+error)
+\begin{DoxyCompactList}\small\item\em Функция принимающая подключение клиента \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс, управляющий работой сервера 
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classServer_a972db953af9cb2c28ec9359788452a5c}\label{classServer_a972db953af9cb2c28ec9359788452a5c}} 
+\index{Server@{Server}!client\_addr@{client\_addr}}
+\index{client\_addr@{client\_addr}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{client\_addr()}{client\_addr()}}
+{\footnotesize\ttfamily int Server\+::client\+\_\+addr (\begin{DoxyParamCaption}\item[{int}]{s,  }\item[{string}]{error,  }\item[{string}]{file\+\_\+error }\end{DoxyParamCaption})}
+
+
+
+Функция принимающая подключение клиента 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int} \mbox{\hyperlink{classServer_a972db953af9cb2c28ec9359788452a5c}{Server::client\_addr}}(\textcolor{keywordtype}{int} s, \textcolor{keywordtype}{string} error, \textcolor{keywordtype}{string} file\_error)\{}
+\DoxyCodeLine{             sockaddr\_in * \mbox{\hyperlink{classServer_a972db953af9cb2c28ec9359788452a5c}{client\_addr}} = \textcolor{keyword}{new} sockaddr\_in;}
+\DoxyCodeLine{             socklen\_t len = \textcolor{keyword}{sizeof} (sockaddr\_in);}
+\DoxyCodeLine{             \textcolor{keywordtype}{int} work\_sock = accept(s, (sockaddr*)(\mbox{\hyperlink{classServer_a972db953af9cb2c28ec9359788452a5c}{client\_addr}}), \&len);}
+\DoxyCodeLine{             \textcolor{keywordflow}{if}(work\_sock == -\/1) \{}
+\DoxyCodeLine{                 std::cout << \textcolor{stringliteral}{"{}Error \#2\(\backslash\)n"{}};}
+\DoxyCodeLine{                 error = \textcolor{stringliteral}{"{}error \#2"{}};}
+\DoxyCodeLine{                 errors(error, file\_error);}
+\DoxyCodeLine{                 \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{             \}}
+\DoxyCodeLine{             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{                 \textcolor{comment}{//Успешное подключение к серверу}}
+\DoxyCodeLine{                 std::cout << \textcolor{stringliteral}{"{}Successfull client connection!\(\backslash\)n"{}};}
+\DoxyCodeLine{                 \textcolor{keywordflow}{return} work\_sock;}
+\DoxyCodeLine{             \}}
+\DoxyCodeLine{             \}}
+
+\end{DoxyCode}
+ 
+\begin{DoxyParams}{Аргументы}
+{\em sockaddr} & Адрес сокета \\
+\hline
+{\em client\+\_\+addr} & Адрес клиента \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classServer_aad6d0eef2397b3368cdd3d6ec134e462}\label{classServer_aad6d0eef2397b3368cdd3d6ec134e462}} 
+\index{Server@{Server}!self\_addr@{self\_addr}}
+\index{self\_addr@{self\_addr}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{self\_addr()}{self\_addr()}}
+{\footnotesize\ttfamily int Server\+::self\+\_\+addr (\begin{DoxyParamCaption}\item[{string}]{error,  }\item[{string}]{file\+\_\+error,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+конструктор класса 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em port} & порт сервера \\
+\hline
+\end{DoxyParams}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+mdfile.\+h\item 
+\mbox{\hyperlink{mdfile_8cpp}{mdfile.\+cpp}}\end{DoxyCompactItemize}

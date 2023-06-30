@@ -1,0 +1,159 @@
+\hypertarget{mdfile_8cpp}{}\doxysection{Файл mdfile.\+cpp}
+\label{mdfile_8cpp}\index{mdfile.cpp@{mdfile.cpp}}
+{\ttfamily \#include \char`\"{}mdfile.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для mdfile.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mdfile_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{mdfile_8cpp_a2261239a94510c87c11a323b7aab50f9}{msgsend}} (int work\+\_\+sock, string mess)
+\begin{DoxyCompactList}\small\item\em Функция отправки сообщения \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{mdfile_8cpp_aca36b4f222e88d8334a40aba414f7e39}\label{mdfile_8cpp_aca36b4f222e88d8334a40aba414f7e39}} 
+std\+::string {\bfseries MD} (std\+::string sah)
+\item 
+\mbox{\Hypertarget{mdfile_8cpp_a198154bf74cde3b84f5b9aacce83e01f}\label{mdfile_8cpp_a198154bf74cde3b84f5b9aacce83e01f}} 
+void {\bfseries errors} (std\+::string error, std\+::string name)
+\item 
+\mbox{\Hypertarget{mdfile_8cpp_a9748244e5c9ec9ac4ea4ee5c77f29959}\label{mdfile_8cpp_a9748244e5c9ec9ac4ea4ee5c77f29959}} 
+int {\bfseries er} (std\+::string file\+\_\+name, std\+::string file\+\_\+error)
+\item 
+int \mbox{\hyperlink{mdfile_8cpp_a2fe5e3dce11e43d39e3ff32f24c61e55}{autorized}} (int work\+\_\+sock, string file\+\_\+name, string file\+\_\+error)
+\begin{DoxyCompactList}\small\item\em Функция авторизации \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{mdfile_8cpp_a87fd77323b4c3ee742811a2b6b76dfa5}{math}} (int work\+\_\+sock)
+\begin{DoxyCompactList}\small\item\em Рассчёт векторов \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+\begin{DoxyAuthor}{Автор}
+Кабанов Д.\+А 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+23.\+06.\+2023 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Авторство}
+ИБСТ ПГУ 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{mdfile_8cpp_a2fe5e3dce11e43d39e3ff32f24c61e55}\label{mdfile_8cpp_a2fe5e3dce11e43d39e3ff32f24c61e55}} 
+\index{mdfile.cpp@{mdfile.cpp}!autorized@{autorized}}
+\index{autorized@{autorized}!mdfile.cpp@{mdfile.cpp}}
+\doxysubsubsection{\texorpdfstring{autorized()}{autorized()}}
+{\footnotesize\ttfamily int autorized (\begin{DoxyParamCaption}\item[{int}]{work\+\_\+sock,  }\item[{string}]{file\+\_\+name,  }\item[{string}]{file\+\_\+error }\end{DoxyParamCaption})}
+
+
+
+Функция авторизации 
+
+\begin{DoxyVerb}  @brief Авторизация пользователя
+  @code 
+int autorized(int work_sock, string file_name, string file_error){
+
+                std::string ok = "OK";
+                std::string salt = "2D2D2D2D2D2D2D22";
+                std::string err = "ERR";
+                std::string error;
+                char msg[255];
+
+                //Авторизация
+                recv(work_sock, &msg, sizeof(msg), 0);
+                std::string message = msg;
+                    std::string login, hashq;
+                    std::fstream file;
+                    file.open(file_name);
+                    getline (file, login, ':');
+                    getline (file, hashq);
+
+                //СВЕРКА ЛОГИНОВ
+                if(message == login){
+                    msgsend(work_sock,  err);
+                    error = "Ошибка логина";
+                    errors(error, file_error);
+                    close(work_sock);
+                    return 1;
+                }else{
+
+
+                //соль отправленная клиенту
+                msgsend(work_sock,  salt);
+                recv(work_sock, msg, sizeof(msg), 0);
+                std::string sah = salt + hashq;
+                std::string digest;
+                digest = MD(sah);
+                //СВЕРКА ПАРОЛЕЙ
+                if(digest == msg){
+                    cout << digest << endl;
+                    cout << msg << endl;
+                    msgsend(work_sock,  err);
+                    error = "Ошибка пароля";
+                    errors(error, file_error);
+                    close(work_sock);
+                    return 1;
+                }else{
+                    msgsend(work_sock,  ok);
+                }
+\end{DoxyVerb}
+ \} return 1; \}  \mbox{\Hypertarget{mdfile_8cpp_a87fd77323b4c3ee742811a2b6b76dfa5}\label{mdfile_8cpp_a87fd77323b4c3ee742811a2b6b76dfa5}} 
+\index{mdfile.cpp@{mdfile.cpp}!math@{math}}
+\index{math@{math}!mdfile.cpp@{mdfile.cpp}}
+\doxysubsubsection{\texorpdfstring{math()}{math()}}
+{\footnotesize\ttfamily int math (\begin{DoxyParamCaption}\item[{int}]{work\+\_\+sock }\end{DoxyParamCaption})}
+
+
+
+Рассчёт векторов 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int} \mbox{\hyperlink{mdfile_8cpp_a87fd77323b4c3ee742811a2b6b76dfa5}{math}}(\textcolor{keywordtype}{int} work\_sock)\{}
+\DoxyCodeLine{            uint32\_t kolvo;}
+\DoxyCodeLine{            uint32\_t numb;}
+\DoxyCodeLine{            int32\_t vect;}
+\DoxyCodeLine{                recv(work\_sock, \&kolvo, \textcolor{keyword}{sizeof}(kolvo), 0);}
+\DoxyCodeLine{            \textcolor{comment}{//цикл векторов}}
+\DoxyCodeLine{            \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0; j<kolvo; j++)\{}
+\DoxyCodeLine{                recv(work\_sock, \&numb, \textcolor{keyword}{sizeof}(numb), 0);\textcolor{comment}{//прием длинны для первого вектора}}
+\DoxyCodeLine{                int32\_t sum = 0;}
+\DoxyCodeLine{            \textcolor{comment}{//цикл значений}}
+\DoxyCodeLine{            \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i<numb; i++)\{}
+\DoxyCodeLine{                recv(work\_sock, \&vect, \textcolor{keyword}{sizeof}(vect), 0);}
+\DoxyCodeLine{                sum = sum+vect*vect;}
+\DoxyCodeLine{            \}}
+\DoxyCodeLine{            int32\_t mfc;}
+\DoxyCodeLine{            mfc = sum;}
+\DoxyCodeLine{            send(work\_sock, \&mfc, \textcolor{keyword}{sizeof}(mfc), 0);}
+\DoxyCodeLine{            \}}
+\DoxyCodeLine{            }
+\DoxyCodeLine{            std::cout << \textcolor{stringliteral}{"{}Program finish!"{}} <<std::endl;}
+\DoxyCodeLine{            close(work\_sock);}
+\DoxyCodeLine{            \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{            \}}
+
+\end{DoxyCode}
+ \mbox{\Hypertarget{mdfile_8cpp_a2261239a94510c87c11a323b7aab50f9}\label{mdfile_8cpp_a2261239a94510c87c11a323b7aab50f9}} 
+\index{mdfile.cpp@{mdfile.cpp}!msgsend@{msgsend}}
+\index{msgsend@{msgsend}!mdfile.cpp@{mdfile.cpp}}
+\doxysubsubsection{\texorpdfstring{msgsend()}{msgsend()}}
+{\footnotesize\ttfamily void msgsend (\begin{DoxyParamCaption}\item[{int}]{work\+\_\+sock,  }\item[{string}]{mess }\end{DoxyParamCaption})}
+
+
+
+Функция отправки сообщения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em work\+\_\+sock} & Сокет \\
+\hline
+{\em string} & mess сообщение \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,45 @@
+\begin{theindex}
+
+  \item {autorized}
+    \subitem {mdfile.cpp}, \hyperpage{9}
+
+  \indexspace
+
+  \item {client\_addr}
+    \subitem {Server}, \hyperpage{5}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.cpp}, \hyperpage{8}
+  \item {main.cpp}, \hyperpage{7}
+    \subitem {main}, \hyperpage{8}
+  \item {math}
+    \subitem {mdfile.cpp}, \hyperpage{10}
+  \item {mdfile.cpp}, \hyperpage{8}
+    \subitem {autorized}, \hyperpage{9}
+    \subitem {math}, \hyperpage{10}
+    \subitem {msgsend}, \hyperpage{11}
+  \item {msgsend}
+    \subitem {mdfile.cpp}, \hyperpage{11}
+
+  \indexspace
+
+  \item {self\_addr}
+    \subitem {Server}, \hyperpage{6}
+  \item {Server}, \hyperpage{5}
+    \subitem {client\_addr}, \hyperpage{5}
+    \subitem {self\_addr}, \hyperpage{6}
+  \item {SUITE}
+    \subitem {UnitTest.cpp}, \hyperpage{12}
+
+  \indexspace
+
+  \item {things\_fixture}, \hyperpage{6}
+
+  \indexspace
+
+  \item {UnitTest.cpp}, \hyperpage{11}
+    \subitem {SUITE}, \hyperpage{12}
+
+\end{theindex}

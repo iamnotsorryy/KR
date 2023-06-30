@@ -1,0 +1,106 @@
+\hypertarget{main_8cpp}{}\doxysection{Файл main.\+cpp}
+\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+Компилируемый модуль  
+
+
+{\ttfamily \#include \char`\"{}mdfile.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Компилируемый модуль 
+
+\begin{DoxyAuthor}{Автор}
+Кабанов Д.\+А 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+23.\+05.\+2023 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Авторство}
+ИБСТ ПГУ 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{ \#include "{}mdfile.h"{}}}
+\DoxyCodeLine{\textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} *argv[]) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{if}(argc == 1)\{}
+\DoxyCodeLine{        std::cout << \textcolor{stringliteral}{"{}Kalculator"{}}  << std::endl;}
+\DoxyCodeLine{        std::cout << \textcolor{stringliteral}{"{}-\/h info"{}} << std::endl;}
+\DoxyCodeLine{        std::cout << \textcolor{stringliteral}{"{}-\/f file name"{}} << std::endl;}
+\DoxyCodeLine{        std::cout << \textcolor{stringliteral}{"{}-\/p port"{}} << std::endl;}
+\DoxyCodeLine{        std::cout << \textcolor{stringliteral}{"{}-\/e error file"{}} << std::endl;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{    \textcolor{keywordtype}{int} opt;}
+\DoxyCodeLine{    \textcolor{keywordtype}{int} port = 33333;}
+\DoxyCodeLine{    std::string file\_name = \textcolor{stringliteral}{"{}/ect/vcalc.conf"{}};}
+\DoxyCodeLine{    std::string file\_error = \textcolor{stringliteral}{"{}/var/log/vcalc.log"{}};}
+\DoxyCodeLine{    std::string error;}
+\DoxyCodeLine{    \textcolor{keywordflow}{while} ((opt = getopt(argc, argv, \textcolor{stringliteral}{"{}hf:p:i:e:"{}} ))!=-\/1 )\{}
+\DoxyCodeLine{    \textcolor{keywordflow}{switch}(opt)\{}
+\DoxyCodeLine{        \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}:}
+\DoxyCodeLine{        std::cout << \textcolor{stringliteral}{"{}Kalculator"{}}  << std::endl;}
+\DoxyCodeLine{        std::cout << \textcolor{stringliteral}{"{}-\/f БД пользователей -\/p порт -\/e файл ошибок"{}} << std::endl;}
+\DoxyCodeLine{        std::cout << \textcolor{stringliteral}{"{}-\/h info"{}} << std::endl;}
+\DoxyCodeLine{        std::cout << \textcolor{stringliteral}{"{}-\/f file name"{}} << std::endl;}
+\DoxyCodeLine{        std::cout << \textcolor{stringliteral}{"{}-\/p port"{}} << std::endl;}
+\DoxyCodeLine{        std::cout << \textcolor{stringliteral}{"{}-\/e error file"{}} << std::endl;}
+\DoxyCodeLine{        \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{        \textcolor{keywordflow}{break};}
+\DoxyCodeLine{        \textcolor{keywordflow}{case} \textcolor{charliteral}{'f'}:\{}
+\DoxyCodeLine{        file\_name = std::string(optarg);}
+\DoxyCodeLine{        \};}
+\DoxyCodeLine{        \textcolor{keywordflow}{break};}
+\DoxyCodeLine{        \textcolor{keywordflow}{case} \textcolor{charliteral}{'p'}:\{}
+\DoxyCodeLine{        port = stoi(std::string(optarg));}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{        \textcolor{keywordflow}{case} \textcolor{charliteral}{'e'}:\{}
+\DoxyCodeLine{        file\_error = std::string(optarg);}
+\DoxyCodeLine{        \};}
+\DoxyCodeLine{        \textcolor{keywordflow}{break};}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{        \textcolor{keywordflow}{if}(er(file\_name, file\_error)==12)\{}
+\DoxyCodeLine{            std::cout<<\textcolor{stringliteral}{"{}Error open file"{}}<<std::endl;}
+\DoxyCodeLine{            \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{        \}}
+\DoxyCodeLine{            \mbox{\hyperlink{classServer}{Server}} \mbox{\hyperlink{classServer}{Server}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{            \textcolor{keywordflow}{while}(\textcolor{keyword}{true}) \{}
+\DoxyCodeLine{                \textcolor{keywordtype}{int} s = \mbox{\hyperlink{classServer}{Server}}.\mbox{\hyperlink{classServer_aad6d0eef2397b3368cdd3d6ec134e462}{self\_addr}}(error, file\_error, port);}
+\DoxyCodeLine{                \textcolor{keywordtype}{int} work\_sock = \mbox{\hyperlink{classServer}{Server}}.\mbox{\hyperlink{classServer_a972db953af9cb2c28ec9359788452a5c}{client\_addr}}(s, error, file\_error);}
+\DoxyCodeLine{}
+\DoxyCodeLine{                    \mbox{\hyperlink{mdfile_8cpp_a2fe5e3dce11e43d39e3ff32f24c61e55}{autorized}}(work\_sock, file\_name, file\_error);    }
+\DoxyCodeLine{                    \mbox{\hyperlink{mdfile_8cpp_a87fd77323b4c3ee742811a2b6b76dfa5}{math}}(work\_sock);}
+\DoxyCodeLine{                }
+\DoxyCodeLine{            \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{    \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
